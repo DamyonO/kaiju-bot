@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField, ActivityType } = require('discord.js');
 
 const KaijuBot = new Client({
     intents: [
@@ -12,6 +12,12 @@ const KaijuBot = new Client({
 
 KaijuBot.on('ready', (c) => {
     console.log(`${c.user.username} is online!`);
+
+    KaijuBot.user.setActivity({
+        name: "Minus One Trailer",
+        type: ActivityType.Streaming,
+        url: 'https://www.youtube.com/watch?v=-EYFLuykn2Y'
+    })
 });
 
 KaijuBot.login(process.env.TOKEN);
@@ -21,7 +27,7 @@ KaijuBot.on('messageCreate', (message) => {
         return
     }
 
-    if (message.content === 'kaiju') {
+    if (message.content === '.$bestKaiju') {
         message.reply('https://media4.giphy.com/media/jRr2Y37pHcYlRU8EZg/giphy.gif')
     }
-})
+});
