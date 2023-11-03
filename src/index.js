@@ -1,6 +1,8 @@
 require('dotenv').config();
 const { Client, IntentsBitField, ActivityType } = require('discord.js');
 
+randomKaiju = ["https://media2.giphy.com/media/ClHz2YRBofO8w282HH/giphy.gif", "https://media.tenor.com/KsPtSodKMm0AAAAd/godzilla-vs-kong-godzilla.gif", "https://media1.giphy.com/media/UpDzyyBkjHyqkQkyhI/200w.gif?cid=6c09b952jtqltnq0bnfwsgml2mfdipjfz10kkfsf53o8drtr&ep=v1_gifs_search&rid=200w.gif&ct=g"]
+
 const KaijuBot = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
@@ -28,6 +30,7 @@ KaijuBot.on('messageCreate', (message) => {
     }
 
     if (message.content === '.$bestKaiju') {
-        message.reply('https://media4.giphy.com/media/jRr2Y37pHcYlRU8EZg/giphy.gif')
+        let random = Math.floor(Math.random() * randomKaiju.length);
+        message.reply('No one Kaiju is the best, but here is one I like: \n' + randomKaiju[random])
     }
 });
